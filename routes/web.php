@@ -67,3 +67,5 @@ Route::get('/release/{carnumber}', 'CompanyController@releasecar');
 
 Route::get('/bookorder/{carnumber}/{email}/{pickupdate}/{releasedate}', 'CompanyController@confirmorder');
 Route::get('/cancelorder/{carnumber}', 'CompanyController@cancelorders');
+
+Route::post('/sendmail/{email}/{carnumber}', 'CompanyController@sendemail');

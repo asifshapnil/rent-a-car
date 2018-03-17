@@ -12,6 +12,7 @@ use App\Book;
 
 
 use Image;
+use Mail;
 
 
 
@@ -154,32 +155,40 @@ class CompanyController extends Controller
     }
 
     public function confirmorder($carnumber,$email,$pickupdate,$releasedate){
-      $post = Vehicle::where('number', $carnumber)->first();
-      $companyid = $post->user_id;
-      $post->book = 1;
-      $post->save();
 
 
-      $book = new Book;
-
-      $book->email = $email;
-      $book->carnumber = $carnumber;
-      $book->dateFrom = $pickupdate;
-      $book->dateTo = $releasedate;
-      $book->companyid = $companyid;
+      $getCarnumber = Book::where('carnumber', $carnumber)->first();
 
 
-      $book->save();
+       if (!$getCarnumber) {
+         $post = Vehicle::where('number', $carnumber)->first();
+         $companyid = $post->user_id;
+         $post->book = 1;
+         $post->save();
 
-      $deleteorder = Order::where('carnumber', $carnumber)->first();
-      $deleteorder->delete();
+         $book = new Book;
+
+         $book->email = $email;
+         $book->carnumber = $carnumber;
+         $book->dateFrom = $pickupdate;
+         $book->dateTo = $releasedate;
+         $book->companyid = $companyid;
+
+
+         $book->save();
+
+         $deleteorder = Order::where('carnumber', $carnumber)->first();
+         $deleteorder->delete();
 
 
 
-      return redirect()->back()->with('success', 'Order confirmed');
+         return view('email.sendemail')->with(['email'=> $email, 'carnumber'=>$carnumber]);
+       }
+
+       return redirect()->back()->with('success', 'Car is already booked');
 
 
-    }
+     }
 
     public function bookedcars($companyid){
       $book = Book::where('companyid', $companyid)->get();
@@ -200,6 +209,30 @@ class CompanyController extends Controller
       $cancel = Order::where('carnumber', $carnumber)->first();
       $cancel->delete();
       return redirect()->back()->with('success', 'Order canceled');
+
+    }
+
+    public function sendemail(Request $request, $email, $carnumber){
+      $companyid = Auth::user()->id;
+
+      $this->validate($request, [
+        'email' => 'required',
+        'message' => 'required',
+      ]);
+
+      $data = [
+        'email' => $request->email,
+        'subject' => $request->subject,
+        'messageBody' => $request->message
+      ];
+
+      Mail::send('email.contacts', $data, function($message) use($data){
+        $message->from('asifadhamshapnil9@gmail.com');
+        $message->to($data['email']);
+        $message->subject($data['subject']);
+      });
+      return redirect('checkorders'.'/'.$companyid)->with('success', 'Confirmation message sent');
+
 
     }
 
