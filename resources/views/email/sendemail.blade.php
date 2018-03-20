@@ -32,8 +32,8 @@
 
 
 
-  <div class="row">
-    <div class="col-lg-5" style="width:1000px; margin:0 auto; margin-top:100px;" >
+  <div class="row formmargin">
+    <div class="col-lg-5 col-12" style="width:1000px; margin:0 auto; margin-top:100px;" >
       <div class="">
         <h3>Send mail to {{$email}}</h3> <hr>
         @include('inc.messages')
@@ -41,40 +41,40 @@
 
       {!! Form::open(['action' => ['CompanyController@sendemail', $carnumber,$email]]) !!}
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-5">
         {!! Form::label('email', 'Email', ['class' => 'btn btn-info formbtn']) !!}
       </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-7">
         {!! Form::email('email', $email, ['class' => 'form-control'])!!}
       </div></div>
         @if ($errors->has('email'))
           <span class="help-block" style="color:red">{!! $errors->first('email') !!}</span> <br>
         @endif
         <div class="row">
-          <div class="col-lg-4">
+          <div class="col-lg-4 col-5">
         {!! Form::label('subject', 'subject',['class' => 'btn btn-info formbtn']) !!}
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-6 col-7">
         {!! Form::text('subject', '', ['class' => 'form-control'])!!}
       </div> </div>
         @if ($errors->has('subject'))
           <span class="help-block" style="color:red">{!! $errors->first('subject') !!}</span> <br>
         @endif <br>
         <div class="row">
-          <div class="col-lg-4">
+          <div class="col-lg-4 col-5">
         {!! Form::label('message', 'message',['class' => 'btn btn-info formbtn']) !!}
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-6 col-7">
         {!! Form::textarea('message', '', ['class' => 'form-control'])!!}
       </div> </div>
         @if ($errors->has('message'))
           <span class="help-block" style="color:red">{!! $errors->first('message') !!}</span> <br>
         @endif <br>
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-6 col-7">
 
           </div>
-          <div class="col-lg-10" style="margin-top:-15px;margin-bottom:15px;">
+          <div class="col-lg-10 col-12" style="margin-top:-15px;margin-bottom:15px;">
         {!! Form::submit('Send Mail', ['class' => 'btn btn-block btn-info']) !!}
       </div> </div>
 

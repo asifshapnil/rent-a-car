@@ -22,10 +22,10 @@
   </center>
     </div>
     <center>
-      {!! Form::open(['action' => 'CustomerController@searchcar']) !!}
+      {!! Form::open(['action' => 'CustomerController@searchcar', 'method' => 'GET']) !!}
       {!! Form::text('from', '', ['class' => 'searchinput btn btn-md', 'placeholder'=>'From']) !!}
       {!! Form::text('to', '', ['class' => 'searchinput btn btn-md', 'placeholder'=>'To']) !!}
-    
+
       {!! Form::submit('Search', ['class' => 'searchinput btn btn-md']) !!}
 </center>
 <div class="logout" style="margin-left:1200px;margin-top:-180px;">
@@ -37,7 +37,7 @@
 
   <div class="container">
 <div class="row">
-  <div class="col-lg-6 col-xs-3">
+  <div class="col-lg-6 col-5">
 <div class="card img-fluid" style="width:500px">
   <img class="card-img-top" src="https://rentalcarsuae.com/wp-content/uploads/2017/09/Top-6-Suggestions-When-Rent-A-Car-500x306.jpg" alt="Card image" style="width:100%">
   <div class="card-img-overlay">
@@ -50,7 +50,7 @@
   </div>
 </div>
 </div>
-<div class="col-lg-6 col-xs-3">
+<div class="col-lg-6 col-5">
   <div class="card img-fluid" style="width:500px">
     <img class="card-img-top" src="https://rentalcarsuae.com/wp-content/uploads/2017/09/Top-6-Suggestions-When-Rent-A-Car-500x306.jpg" alt="Card image" style="width:100%">
     <div class="card-img-overlay">

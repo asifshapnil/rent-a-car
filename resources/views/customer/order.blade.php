@@ -30,7 +30,7 @@
 
 
   <div class="row">
-    <div class="col-lg-5" style="width:1000px; margin:0 auto; margin-top:100px;" >
+    <div class="col-lg-5 col-12" style="width:1000px; margin:0 auto; margin-top:100px;" >
       <div class="">
         <h3>Order {{$carnumber}} </h3> <hr>
         @include('inc.messages')
@@ -38,48 +38,48 @@
 
       {!! Form::open(['action' => ['OrderController@postorder', $carnumber]]) !!}
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-4">
         {!! Form::label('email', 'Email',['class' => 'btn btn-info formbtn']) !!}
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-6 col-6">
         {!! Form::email('email', Auth::guard('customers')->user()->email, ['class' => 'form-control'])!!}
       </div> </div>
         @if ($errors->has('email'))
           <span class="help-block" style="color:red">{!! $errors->first('email') !!}</span> <br>
         @endif
         <div class="row">
-          <div class="col-lg-4">
+          <div class="col-lg-4 col-4">
           {!! Form::label('from', 'From',['class' => 'btn btn-info formbtn']) !!}
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-6">
           {!! Form::text('from', $from, ['class' => 'form-control'])!!}
         </div> </div>
 
         <div class="row">
-          <div class="col-lg-4">
+          <div class="col-lg-4 col-4">
           {!! Form::label('to', 'To',['class' => 'btn btn-info formbtn']) !!}
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-6">
           {!! Form::text('to', $to, ['class' => 'form-control'])!!}
         </div> </div>
         <div class="row">
-          <div class="col-lg-4">
+          <div class="col-lg-4 col-4">
           {!! Form::label('date', 'Date',['class' => 'btn btn-info formbtn']) !!}
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-6">
           {!! Form::date('date', '', ['class' => 'form-control'])!!}
         </div> </div>
         <div class="row">
-          <div class="col-lg-4">
+          <div class="col-lg-4 col-4">
           {!! Form::label('releasedate', 'ReleaseDate',['class' => 'btn btn-info formbtn']) !!}
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-6">
           {!! Form::date('releasedate', '', ['class' => 'form-control'])!!}
         </div> </div>
         <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-4">
         {!! Form::label('pickupAddress', 'PickUp address',['class' => 'btn btn-info formbtn']) !!} </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-6">
         {!! Form::textarea('pickupAddress', '', ['class' => 'form-control'])!!}
       </div> </div>
 
@@ -88,9 +88,9 @@
         @endif
 
         <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-4">
         {!! Form::label('pickupTime', 'PickUp Time',['class' => 'btn btn-info formbtn']) !!} </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-6">
         {!! Form::text('pickupTime', '', ['class' => 'form-control'])!!}
       </div> </div>
         @if ($errors->has('pickupTime'))
@@ -100,7 +100,7 @@
 
         {!! Form::token()!!}
         <div class="row">
-        <div class="col-lg-10">
+        <div class="col-lg-10 col-10">
         {!! Form::submit('Order Now', ['class' => 'btn btn-block btn-info']) !!}
       </div></div>
 

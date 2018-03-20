@@ -36,12 +36,11 @@
         <div class="col-lg-3 col-1"> <b>PerDay Waiting </b></div>
         <div class="col-lg-3 col-1"> <b>Cost </b></div>
         <div class="col-lg-3 col-1">
-
-        {!! Form::open(['action' => 'CustomerController@searchcardesc', 'method' => 'GET']) !!}
+        {!! Form::open(['action' => 'CustomerController@searchcar', 'method' => 'GET']) !!}
         {!! Form::hidden('from', $from) !!}
         {!! Form::hidden('to', $to) !!}
 
-        {!! Form::submit('show descending', ['class' => 'btn btn-md btn-danger']) !!}
+        {!! Form::submit('show ascending', ['class' => 'btn btn-md btn-danger']) !!}
       </div>
 
       </div>

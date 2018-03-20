@@ -30,27 +30,27 @@
 
 
 
-  <div class="row">
-    <div class="col-lg-5" style="width:1000px; margin:0 auto; margin-top:100px;" >
+  <div class="row formmargin">
+    <div class="col-lg-5 col-12 " style="width:1000px; margin:0 auto; margin-top:100px;" >
       <div class="">
         <h3>Get Signedup here</h3> <hr>
       </div>
 
       {!! Form::open(['action' => ['CustomerController@postsignup', $carnumber,$from,$to]]) !!}
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-5">
         {!! Form::label('email', 'Email',['class' => 'btn btn-info formbtn']) !!}
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-6 col-7">
         {!! Form::email('email', '', ['class' => 'form-control'])!!}
       </div> </div>
         @if ($errors->has('email'))
           <span class="help-block" style="color:red">{!! $errors->first('email') !!}</span> <br>
         @endif
         <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-5">
         {!! Form::label('name', 'Name',['class' => 'btn btn-info formbtn']) !!} </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-7">
         {!! Form::text('name', '', ['class' => 'form-control'])!!}
       </div> </div>
         @if ($errors->has('name'))
@@ -59,9 +59,9 @@
 
 
         <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-5">
         {!! Form::label('password', 'Password',['class' => 'btn btn-info formbtn']) !!} </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-7">
         {!! Form::text('password', '', ['class' => 'form-control'])!!}
       </div> </div>
         @if ($errors->has('password'))
@@ -70,7 +70,7 @@
 
         {!! Form::token()!!}
         <div class="row">
-        <div class="col-lg-10">
+        <div class="col-lg-10 col-12">
         {!! Form::submit('Sign Up', ['class' => 'btn btn-block btn-info']) !!}
       </div></div>
 

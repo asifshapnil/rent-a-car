@@ -19,6 +19,10 @@
         body{
           background-color: #DCE6F2;
         }
+        .jumbotron a{
+          color: #fff;
+          text-decoration: none;
+        }
         .sidenav {
             height: 100%;
             width: 0;
@@ -76,13 +80,14 @@
         }
         .heading p{
           color: #bcd1c8;
-          font-size: 20px;
-          font-family: 'Bellefair', serif;
+          font-size: 17px;
+          /* font-family: 'Bellefair', serif; */
         }
         .heading h1{
           /* color: #ccfced; */
           color: #ffff;
-          font-family: 'Bellefair', serif;
+          /* font-family: 'Bellefair', serif; */
+          /* font-family: 'Merriweather', serif; */
           font-size: 60px;
         }
         .homebtn1{
@@ -99,7 +104,7 @@
         .homebtn2{
           margin-left: -5px;
           background-color: #ffff;
-          color:#08143a;
+          color:#08143a !important;
           border: 2px solid #ffff;
           /* border-left: none !important; */
           width: 120px;
@@ -133,7 +138,7 @@
           margin-top: -25px;
           margin-left: -20px;
 
-          background-color: #E46C0A;
+          background-color:  #08143a;
           width: 200px;
           color: #ccfced;
           height: 30px;
@@ -209,10 +214,10 @@
                   background-color: blue;
                 }
         .orderbtn{
-          width: 200px;
-          height: 130px;
+          width: 150px;
+          height: 50px;
           border-radius: 15px;
-          padding: 50px;
+          padding: 15px;
           font-weight: bold;
           color: #fff;
 
@@ -221,6 +226,69 @@
 
           margin-right: -400px;
         }
+
+        .searchcar{
+          width:1300px;
+          margin:0 auto;
+          padding-bottom:20px;
+        }
+        .iconrow{
+          width: 1100px;
+          margin: 0 auto;
+          padding-top: 20px;
+          padding-bottom: 20px;
+
+        }
+
+        .icons a{
+          color: #000;
+          text-decoration: none;
+        }
+
+
+
+        #iconhead{
+          border-bottom: 2px solid #08143a;
+          width: 100px;
+
+        }
+
+        #iconp{
+          width: 250px;
+        }
+
+        #services{
+          background-color: #08143a;
+        }
+
+        #servicesimg img{
+          width: 500px;
+          opacity: 0.8;
+        }
+
+        .carousel-item p{
+          color: #fff;
+        }
+        .carousel-item{
+          padding: 20px;
+        }
+
+        #servicesrow{
+          margin-top: 30px;
+        }
+
+        #cardmargin{
+          margin-left: px;
+        }
+
+        .path{
+          margin-left: 850px;
+          margin-top:  -30px;
+
+
+        }
+
+
 
         /* social */
 
@@ -236,6 +304,139 @@
           .sidenav .closebtn{
             margin-top: -35px !important;
             margin-left: 10px;
+          }
+
+          .orderbtn{
+            width: 100px;
+            height: 50px;
+            padding: 0px;
+            padding: 15px;
+          }
+          #carimg{
+            width: 100px;
+            height: 50px;
+          }
+          .searchcar{
+            width: 500px;
+          }
+
+          .cardbtn1{
+            width: 130px;
+            margin-top: 65px;
+            height: 30px;
+
+
+          }
+          .cardbtn2{
+            width: 186px;
+            height: 30px;
+
+          }
+          .card img{
+            height: 100%;
+            margin-bottom: 0;
+            padding-bottom: 0;
+          }
+          .profilebtn{
+            width: 170px;
+            height: 50px;
+            padding: 10px;
+            margin-left: 35px;
+            margin-right: 35px;
+            margin-top: 35px;
+            margin-bottom: 35px;
+
+            margin-bottom: -15px !important;
+            color: #ffff;
+          }
+
+          .orderlist{
+            padding: 0px;
+            margin: 0px;
+            width: 100%;
+          }
+          .logout{
+            margin-left: 200px;
+            margin-top: -100px;
+          }
+          .jumbotron{
+            height: 150px;
+          }
+
+          .heading{
+            margin-top: -70px;
+          }
+
+          .heading h1{
+            font-size: 25px;
+          }
+
+          .heading p{
+            font-size: 12px;
+          }
+
+          .homebtn1{
+            width: 77px;
+            font-size: 15px;
+            height: 20px;
+          }
+          .homebtn2{
+            width: 77px;
+            height: 20px;
+
+            font-size: 15px;
+
+          }
+
+          .home a{
+            font-size: 12px;
+            padding: 0px;
+
+          }
+
+          .searchinput{
+            width: 77px;
+            height: 20px;
+            padding: 0px;
+          }
+
+          b{
+            font-size: 12px;
+          }
+          .footer{
+            height: 35px;
+            padding: 0px;
+          }
+          .footer p{
+            padding: 0px;
+          }
+          h6{
+            font-size: 11px;
+          }
+          h3{
+            font-size: 20px;
+            padding: 0px;
+            margin: 0px;
+          }
+
+          .form-control{
+            font-size: 12px;
+            height: 35px;
+
+          }
+
+          .formbtn{
+            height: 35px;
+            font-size: 12px;
+
+          }
+
+          .btn-block{
+            height: 35px;
+            font-size: 12px;
+          }
+          .formmargin{
+            margin-top: -100px;
           }
 
 

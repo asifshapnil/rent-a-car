@@ -32,7 +32,10 @@ Route::post('/storesignup', 'CompanyController@storesignup');
 Route::get('/companysign', 'CompanyController@signin')->middleware('Usermiddleware');
 Route::post('/companysign', 'CompanyController@getsignin');
 Route::get('/logout', 'CompanyController@logout');
-Route::post('/searchcar', 'CustomerController@searchcar');
+Route::get('/searchcar', 'CustomerController@searchcar');
+Route::get('/searchcardesc', 'CustomerController@searchcardesc');
+
+
 
 Route::get('/order/{carnumber}/{from}/{to}', 'OrderController@orders');
 
@@ -66,6 +69,6 @@ Route::get('/release/{carnumber}', 'CompanyController@releasecar');
 
 
 Route::get('/bookorder/{carnumber}/{email}/{pickupdate}/{releasedate}', 'CompanyController@confirmorder');
-Route::get('/cancelorder/{carnumber}', 'CompanyController@cancelorders');
+Route::get('/cancelorder/{carnumber}/{email}', 'CompanyController@cancelorders');
 
 Route::post('/sendmail/{email}/{carnumber}', 'CompanyController@sendemail');

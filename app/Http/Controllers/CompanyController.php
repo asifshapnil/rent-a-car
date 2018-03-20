@@ -135,12 +135,16 @@ class CompanyController extends Controller
       $this->validate($request, [
         'from' => 'required',
         'to' => 'required',
+        'cost' => 'required',
+
       ]);
 
       $location = new Location;
       $location->userid = $companyid;
       $location->from = $request->input('from');
       $location->to = $request->input('to');
+      $location->cost = $request->input('cost');
+
 
       $location->save();
       return redirect()->back()->with('success', 'New location added');
@@ -150,7 +154,8 @@ class CompanyController extends Controller
 
     public function checkorders($companyid){
       $orders = Order::where('company_id',$companyid)->get();
-      return view('company.orderlist')->with('orders', $orders);
+
+      return view('company.orderlist')->with(['orders'=> $orders, 'companyid'=> $companyid]);
 
     }
 
@@ -181,8 +186,11 @@ class CompanyController extends Controller
          $deleteorder->delete();
 
 
+         $subject = "Confirmation message from rent a car";
+         $messageBody = "Your order has been confirmed for". $carnumber. "Car will be arrived at your place at the right time.";
+         $this->email($email, $subject, $messageBody);
 
-         return view('email.sendemail')->with(['email'=> $email, 'carnumber'=>$carnumber]);
+         return redirect()->back()->with('success', 'confirmation message sent');
        }
 
        return redirect()->back()->with('success', 'Car is already booked');
@@ -192,7 +200,7 @@ class CompanyController extends Controller
 
     public function bookedcars($companyid){
       $book = Book::where('companyid', $companyid)->get();
-      return view('company.bookedcars')->with('bookedcars', $book);
+      return view('company.bookedcars')->with(['bookedcars' => $book, 'companyid' => $companyid]);
     }
 
     public function releasecar($carnumber){
@@ -205,10 +213,31 @@ class CompanyController extends Controller
       return redirect()->back()->with('success', 'Car released');
     }
 
-    public function cancelorders($carnumber){
+    public function cancelorders($carnumber, $email){
       $cancel = Order::where('carnumber', $carnumber)->first();
       $cancel->delete();
+
+      $subject = "Order canceled";
+      $messageBody = "Rent a car is extremely sorry to inform you that the car you ordered car(".$carnumber.")can not be reached for some reason. Please check for another one. Car will be arrived at your place at the right time.";
+      $this->email($email, $subject, $messageBody);
       return redirect()->back()->with('success', 'Order canceled');
+
+    }
+
+    public function email($email, $subject, $messageBody){
+
+
+      $data = [
+        'email' => $email,
+        'subject' => $subject,
+        'messageBody' => $messageBody
+      ];
+
+      Mail::send('email.contacts', $data, function($message) use($data){
+        $message->from('asifadhamshapnil9@gmail.com');
+        $message->to($data['email']);
+        $message->subject($data['subject']);
+      });
 
     }
 

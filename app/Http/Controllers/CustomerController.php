@@ -22,8 +22,20 @@ class CustomerController extends Controller
         ->join('locations', 'vehicles.user_id', '=', 'locations.userid')
         ->select('vehicles.*','locations.*')
         ->where('locations.from','=',$from)->where('locations.to','=',$to)->where('vehicles.book','!=',1)
-        ->get();
-    return view('customer.searchedcar')->with('searched', $searched);
+        ->orderBy('locations.cost', 'asc')->get();
+    return view('customer.searchedcar')->with(['searched'=> $searched, 'from' => $from, 'to' => $to]);
+  }
+
+  public function searchcardesc(Request $request){
+    $from = $request->input('from');
+    $to = $request->input('to');
+
+    $searched = DB::table('vehicles')
+        ->join('locations', 'vehicles.user_id', '=', 'locations.userid')
+        ->select('vehicles.*','locations.*')
+        ->where('locations.from','=',$from)->where('locations.to','=',$to)->where('vehicles.book','!=',1)
+        ->orderBy('locations.cost', 'desc')->get();
+    return view('customer.searchedcarasc')->with(['searched'=> $searched, 'from' => $from, 'to' => $to]);
   }
 
   public function customersignin(Request $request, $carnumber,$from,$to)
