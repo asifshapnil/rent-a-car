@@ -1,6 +1,8 @@
 @extends('layouts.mastar')
 
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="/" class="fa fa-home"></a>
@@ -22,9 +24,13 @@
   </center>
     </div>
     <center>
-      {!! Form::open(['action' => 'CustomerController@searchcar', 'method' => 'GET']) !!}
-      {!! Form::text('from', '', ['class' => 'searchinput btn btn-md', 'placeholder'=>'From']) !!}
-      {!! Form::text('to', '', ['class' => 'searchinput btn btn-md', 'placeholder'=>'To']) !!}
+
+
+
+       {!! Form::open(['action' => 'CustomerController@searchcar', 'method' => 'GET']) !!}
+           {!! Form::text('from', '', ['class' => 'searchinput btn btn-md', 'id' => 'ajax', 'placeholder'=>'From']) !!}
+           {!! Form::text('to', '', ['class' => 'searchinput btn btn-md', 'id' => 'ajaxTo', 'placeholder'=>'To']) !!}
+
 
       {!! Form::submit('Search', ['class' => 'searchinput btn btn-md']) !!}
 </center>
@@ -66,5 +72,69 @@
 
 </div>
   </div>
+
+  <script >
+    $( document ).ready(function() {
+$( function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $( "#ajax" ).autocomplete({
+      source: '/daybooking/searchajax'
+    });
+  } );});
+
+   $( document ).ready(function() {
+$( function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $( "#ajaxTo" ).autocomplete({
+      source: 'daybooking/searchajaxTo'
+    });
+  } );});
+  </script>
 
 @endsection

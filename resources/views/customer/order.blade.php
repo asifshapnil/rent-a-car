@@ -1,35 +1,8 @@
 @extends('layouts.mastar')
 
 @section('content')
-  <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="/" class="fa fa-home"></a>
 
-    <a href="#" class="fa fa-search"></a>
-    <a href="#"class="fa fa-envelope"></a>
-    <a href="#" class="fa fa-globe"></a>
-    <a href="#" class="fa fa-trash"></a>
-  </div>
-
-  <div id="main" class="jumbotron">
-    <span style="font-size:30px;cursor:pointer; color:#ffff; width:150px;" onclick="openNav()">&#9776; </span>
-    <div class="heading">
-      <center>
-      <h1>Rent A Car</h1>
-      <p>Make your order for {{$carnumber}}  </p>
-  </center>
-    </div>
-    <div class="logout" style="margin-left:1200px;margin-top:-180px;">
-      @if (Auth::guard('customers')->check())
-        <a href="/customerlogout" class="btn btn-md btn-info">Log Out</a>
-      @endif
-    </div>
-  </div>
-
-
-
-
-  <div class="row">
+  {{-- <div class="row">
     <div class="col-lg-5 col-12" style="width:1000px; margin:0 auto; margin-top:100px;" >
       <div class="">
         <h3>Order {{$carnumber}} </h3> <hr>
@@ -109,5 +82,91 @@
 
   </div>
 
+</div> --}}
+
+<div class="row">
+  <div class="col-md-12 pb-5">
+    @include('inc.navdark') <br> <br> <br><br>
+
+  </div>
+</div>
+<div class="row offset-md-1">
+
+</div>
+
+<div class="row justify-content-center">
+<div class="col-md-6">
+  <div class="card">
+    <div class="card-header bg-faded">
+      <p class="font-weight-bold text-muted text-center display-5">Please Sign In</p>
+    </div>
+    <div class="card-body bg-light">
+      {!! Form::open(['action' => ['OrderController@postorder', $carnumber], 'data-parsley-validate'=>'']) !!}
+
+      @if (session('success'))
+        <div class="col-sm-12 col-md-12">
+          <div class="form-group">
+            <a href="#" class="btn btn-primary btn-block font-weight-bold">@include('inc.messages')</a>
+            </div>
+        </div>
+      @endif
+      <div class="col-sm-12 col-md-12">
+        <div class="form-group">
+          <a href="#" class="btn btn-danger btn-block font-weight-bold">Order car {{$carnumber}}</a>
+          </div>
+      </div>
+
+      <div class="col-sm-12 col-md-12">
+        <div class="form-group">
+            {{-- <label>Email</label> --}}
+            <input class="form-control form-control-lg" name="email" required='' placeholder="Your email" type="email">
+          </div>
+      </div>
+      <div class="col-sm-12 col-md-12">
+        <div class="form-group">
+            {{-- <label>Email</label> --}}
+            <input class="form-control form-control-lg" name="from" value="{{$from}}" required='' placeholder="Your Name" type="text">
+          </div>
+      </div>
+
+      <div class="col-sm-12 col-md-12">
+        <div class="form-group">
+            {{-- <label>Password</label> --}}
+            <input class="form-control form-control-lg" name="to" value="{{$to}}" required='' placeholder="Password" type="text">
+          </div>
+      </div>
+      <div class="col-sm-12 col-md-12">
+        <div class="form-group">
+            {{-- <label>Password</label> --}}
+            <input class="form-control form-control-lg" name="date"  required=''  type="date">
+          </div>
+      </div>
+      <div class="col-sm-12 col-md-12">
+        <div class="form-group">
+            {{-- <label>Password</label> --}}
+            <input class="form-control form-control-lg" name="releasedate"  required=''  type="date">
+          </div>
+      </div>
+      <div class="col-sm-12 col-md-12">
+        <div class="form-group">
+            {{-- <label>Password</label> --}}
+            <input class="form-control form-control-lg" name="pickupTime"  required=''  type="time">
+          </div>
+      </div>
+      <div class="col-sm-12 col-md-12">
+        <div class="form-group">
+            {{-- <label>Password</label> --}}
+            <textarea name="pickupAddress" rows="8" cols="80" required=''></textarea>
+          </div>
+      </div>
+
+      <div class="col-sm-12 col-md-12">
+        <div class="form-group">
+            {!! Form::submit('Order Car', ['class' => 'btn btn-outline-primary btn-block']) !!}
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 @endsection

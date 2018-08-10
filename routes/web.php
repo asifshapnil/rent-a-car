@@ -11,21 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('landing');
-});
+// Route::get('/', function () {
+//     return view('landing');
+// });
 
-Route::get('/oneway', function () {
-    return view('oneway');
-});
-Route::get('/daybooking', function () {
-    return view('daybooking');
-});
+Route::get('/', 'WelcomeController@index');
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
 
+
+Route::get('/daybooking', 'CustomerController@ajax');
+Route::get('/oneway', 'CustomerController@ajax');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/companysignup', 'CompanyController@signup');
 Route::post('/storesignup', 'CompanyController@storesignup');
@@ -72,3 +67,6 @@ Route::get('/bookorder/{carnumber}/{email}/{pickupdate}/{releasedate}', 'Company
 Route::get('/cancelorder/{carnumber}/{email}', 'CompanyController@cancelorders');
 
 Route::post('/sendmail/{email}/{carnumber}', 'CompanyController@sendemail');
+Route::get('/daybooking/searchajax', 'CustomerController@searchajax');
+
+Route::get('/daybooking/searchajaxTo', 'CustomerController@searchajaxTo');

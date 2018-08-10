@@ -103,7 +103,8 @@
       {!! Form::label('carimage', 'Upload Picture',['class' => 'btn btn-info formbtn']) !!}
     </div>
     <div class="col-lg-6 col-7">
-      {!! Form::file('carimage', '', ['class' => 'form-control'])!!}
+      {{-- {!! Form::file('carimage', '', ['class' => 'form-control'])!!} --}}
+      <input type="file" name="carimage" value="" class="form-control">
     </div> </div> <br>
         <div class="row">
 

@@ -1,7 +1,16 @@
 @extends('layouts.mastar')
-
+{{-- @include('inc.navdark') <br> <br> <br> --}}
 @section('content')
-  <div id="mySidenav" class="sidenav">
+  <div class="row">
+    <div class="col-md-12 pb-5">
+      @include('inc.navdark') <br> <br> <br><br>
+
+    </div>
+  </div>
+  <div class="row offset-md-1">
+
+  </div>
+  {{-- <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="/" class="fa fa-home"></a>
 
@@ -29,7 +38,7 @@
         <a href="/customerlogout" class="btn btn-md btn-info">Log Out</a>
       @endif
     </div> --}}
-  </div>
+  {{-- </div>
 
       <div class="row" style="width:1000px;margin:0 auto; padding-bottom:20px; padding-left:15px;">
         <div class="col-lg-3 col-1"> <b>Cars</b> </div>
@@ -61,8 +70,8 @@
            <div class="col-lg-3 col-1">
              <div class="orderbtn bg-info" >
                <b> {{$search->cost}}</b>
-             </div>
-
+             </div>  --}}
+{{--
            </div>
          <div class="col-lg-3 col-1">
            <a href="/order/{{$search->number}}/{{$search->from}}/{{$search->to}}" class="btn btn-md btn-success orderbtn" ><b>Order Now</b></a>
@@ -81,11 +90,59 @@
          <div class="col-lg-5 col-5">
            {{-- <center>{{ $searched->links() }}</center> --}}
 
-
+{{--
          </div>
+       </div>  --}}
+
+       <div class="row justify-content-center">
+         <div class="col-md-8">
+           <div class="card">
+              <div class="card-header bg-faded">
+                <div class="d-flex flex-row">
+                  <div class="p-4 align-self-start">
+                    <p class="font-weight-bold text-muted display-5">Available Cars for {{$from}} to {{$to}}</p>
+                  </div>
+                  <div class="p-4 align-self-end ml-auto">
+                    {!! Form::open(['action' => 'CustomerController@searchcardesc', 'method' => 'GET']) !!}
+                    {!! Form::hidden('from', $from) !!}
+                    {!! Form::hidden('to', $to) !!}
+                    {!! Form::hidden('type', $type) !!}
+                    
+                    {!! Form::submit('show descending', ['class' => 'btn btn-md btn-danger']) !!}
+                  </div>
+                </div>
+
+              </div>
+            </div>
+              @foreach ($searched as $search)
+              <div class="card">
+                <div class="card-header bg-faded">
+                  <div class="row justify-content-between">
+                    <div class="col-md-4">
+                      <img src="{{asset('images/' . $search->image)}}" alt="" class="img-fluid"> <br>
+                    </div>
+                    <div class="col-md-4">
+                      <p class="text-muted">{{$search->description}}</p>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="">
+                        <p class="text-muted">{{$search->cost}} BDT</p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="card-footer">
+                  <a href="/order/{{$search->number}}/{{$search->from}}/{{$search->to}}" class="btn btn-block btn-outline-primary text-primary order" ><b>Order Now</b></a>
+
+                </div>
+              </div>
+            @endforeach
+          </div>
+
+
+
        </div>
-
-
 
 
 

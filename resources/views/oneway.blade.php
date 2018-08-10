@@ -1,6 +1,8 @@
 @extends('layouts.mastar')
 
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="/" class="fa fa-home"></a>
@@ -9,11 +11,6 @@
     <a href="#"class="fa fa-envelope"></a>
     <a href="#" class="fa fa-globe"></a>
     <a href="#" class="fa fa-trash"></a>
-    <a class="logout" style="margin-left:1200px;margin-top:-180px;">
-      @if (Auth::guard('customers')->check())
-        <a href="/customerlogout" class="btn btn-md btn-info">fa fa-sighn-out</a>
-      @endif
-    </a>
   </div>
 
   <div id="main" class="jumbotron">
@@ -27,20 +24,15 @@
   </center>
     </div>
     <center>
-      {!! Form::open(['action' => 'CustomerController@searchcar', 'method' => 'GET']) !!}
-      {!! Form::text('from', '', ['class' => 'searchinput btn btn-md', 'placeholder'=>'From']) !!}
-      {!! Form::text('to', '', ['class' => 'searchinput btn btn-md', 'placeholder'=>'To']) !!}
+
+
+
+       {!! Form::open(['action' => 'CustomerController@searchcar', 'method' => 'GET']) !!}
+           {!! Form::text('from', '', ['class' => 'searchinput btn btn-md', 'id' => 'ajax', 'placeholder'=>'From']) !!}
+           {!! Form::text('to', '', ['class' => 'searchinput btn btn-md', 'id' => 'ajaxTo', 'placeholder'=>'To']) !!}
+
 
       {!! Form::submit('Search', ['class' => 'searchinput btn btn-md']) !!}
-
-
-      {{-- <form class="" action="/searchcar" method="">
-        <input type="text" name="" value="" class="searchinput btn btn-md" placeholder="From">
-        <input type="text" name="" value="" class="searchinput btn btn-md" placeholder="To">
-        <input type="date" name="" value="Date" class="searchinput btn btn-md">
-        <input type="submit" name="" value="Search" class="btn btn-md btn-secondary search">
-
-      </form> --}}
 </center>
 <div class="logout" style="margin-left:1200px;margin-top:-180px;">
   @if (Auth::guard('customers')->check())
@@ -80,5 +72,71 @@
 
 </div>
   </div>
+
+  <script >
+    $( document ).ready(function() {
+$( function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $( "#ajax" ).autocomplete({
+      source: "{{asset('daybooking/searchajax')}}"
+    });
+  } );});
+
+   $( document ).ready(function() {
+$( function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $( "#ajaxTo" ).autocomplete({
+      // source: 'http://rentacarbd.ml/daybooking/searchajaxTo'
+      source: "{{asset('daybooking/searchajaxTo')}}"
+
+    });
+  } );});
+  </script>
 
 @endsection
