@@ -1,13 +1,13 @@
 @extends('layouts.mastar')
 {{-- @include('inc.navdark') <br> <br> <br> --}}
 @section('content')
-  <div class="row">
+  <div class="row no-container">
     <div class="col-md-12 pb-5">
       @include('inc.navdark') <br> <br> <br><br>
 
     </div>
   </div>
-  <div class="row offset-md-1">
+  <div class="row offset-md-1 no-container">
 
   </div>
   {{-- <div id="mySidenav" class="sidenav">
@@ -94,7 +94,7 @@
          </div>
        </div>  --}}
 
-       <div class="row justify-content-center">
+       <div class="row justify-content-center no-container">
          <div class="col-md-8">
            <div class="card">
               <div class="card-header bg-faded">
@@ -107,7 +107,7 @@
                     {!! Form::hidden('from', $from) !!}
                     {!! Form::hidden('to', $to) !!}
                     {!! Form::hidden('type', $type) !!}
-                    
+
                     {!! Form::submit('show descending', ['class' => 'btn btn-md btn-danger']) !!}
                   </div>
                 </div>

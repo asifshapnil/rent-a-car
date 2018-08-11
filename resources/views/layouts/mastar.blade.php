@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/animate.css')}}">
         <link rel="stylesheet" href="{{asset('css/jquery-ui.mins.css')}}">
+        <link rel="stylesheet" href="{{asset('css/new-font-awesome.css')}}">
 
 
 

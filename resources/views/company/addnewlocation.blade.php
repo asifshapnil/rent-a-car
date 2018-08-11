@@ -1,48 +1,8 @@
 @extends('layouts.mastar')
 
 @section('content')
-  <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="/" class="fa fa-home"></a>
 
-    <a href="#" class="fa fa-search"></a>
-    <a href="#"class="fa fa-envelope"></a>
-    <a href="#" class="fa fa-globe"></a>
-    <a href="#" class="fa fa-trash"></a>
-    <a class="logout">
-      @if (Auth::check())
-        <a href="/logout" class="fa fa-sign-out"></a>
-      @endif
-    </a>
-  </div>
-
-  <div id="main" class="jumbotron">
-    <span style="font-size:30px;cursor:pointer; color:#ffff; width:150px;" onclick="openNav()">&#9776; </span>
-    <div class="path">
-      <a href="/addnewcar/{{$company->id}}/{{auth()->user()->companyname}}" class="" id="">Add new car /</a>
-
-    <a href="/addnewlocation/{{$company->id}}/{{auth()->user()->companyname}}" class="" id="">Add new locations /</a>
-
-    <a href="/checkorders/{{$company->id}}" class="" id="">Ordder lists /</a>
-
-    <a href="/bookedcars/{{$company->id}}" class="" id="">Booked Cars</a>
-  </div>
-    <div class="heading">
-      <center>
-      <h1>Rent A Car</h1>
-      <p>Dashboard  </p>
-  </center>
-    </div>
-    <center>
-
-
-    </center>
-  </div>
-
-
-
-
-  <div class="row formmargin">
+  {{-- <div class="row formmargin">
     <div class="col-lg-5 col-12 " style="width:1000px; margin:0 auto; margin-top:100px;" >
       <div class="">
         <h3>Add new car here</h3> <hr>
@@ -100,5 +60,64 @@
 
   </div>
 
+</div> --}}
+
+
+  <div class="row no-container">
+    <div class="col-md-12 pb-5">
+      @include('inc.navdark') <br> <br> <br><br>
+
+    </div>
+  </div>
+  <div class="row offset-md-1no-container">
+
+  </div>
+
+<div class="row justify-content-center no-container">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header bg-faded">
+        <p class="font-weight-bold text-muted text-center display-5">Add new location</p>
+      </div>
+      <div class="card-body bg-light">
+        {!! Form::open(['action' => ['CompanyController@postnewlocation',  $company->id, $company->companyname], 'data-parsley-validate'=>'']) !!}
+      @if (session('success'))
+        <div class="col-sm-12 col-md-12">
+          <div class="form-group">
+            <a href="#" class="btn btn-primary btn-block font-weight-bold">@include('inc.messages')</a>
+          </div>
+        </div>
+      @endif
+
+        <div class="col-sm-12 col-md-12">
+          <div class="form-group">
+              {{-- <label>Email</label> --}}
+              <input class="form-control form-control-lg" name="from" required='' placeholder="From" type="text">
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12">
+          <div class="form-group">
+              {{-- <label>Email</label> --}}
+              <input class="form-control form-control-lg" name="to" required='' placeholder="To" type="text">
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-12">
+          <div class="form-group">
+              {{-- <label>Password</label> --}}
+              <input class="form-control form-control-lg" name="cost" required='' placeholder="Location Cost" type="text">
+            </div>
+        </div>
+
+
+
+        <div class="col-sm-12 col-md-12">
+          <div class="form-group">
+              {!! Form::submit('Add Location', ['class' => 'btn btn-outline-primary btn-block']) !!}
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 @endsection

@@ -1,35 +1,8 @@
-@extends('layouts.mastar')
-
-@section('content')
-  <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="/" class="fa fa-home"></a>
-
-    <a href="#" class="fa fa-search"></a>
-    <a href="#"class="fa fa-envelope"></a>
-    <a href="#" class="fa fa-globe"></a>
-    <a href="#" class="fa fa-trash"></a>
-
-  </div>
-
-  <div id="main" class="jumbotron">
-    <span style="font-size:30px;cursor:pointer; color:#ffff; width:150px;" onclick="openNav()">&#9776; </span>
-    <div class="heading">
-      <center>
-      <h1>Rent A Car</h1>
-      <p>Sign In here
-  </p>
-  </center>
-    </div>
-    <center>
-
-
-    </center>
-  </div>
 
 
 
 
+{{--
 
   <div class="row formmargin">
     <div class="col-lg-5 col-12 "  style="width:1000px; margin:0 auto; margin-top:100px;" >
@@ -82,5 +55,70 @@
 
   </div>
 
+</div> --}}
+@extends('layouts.mastar')
+
+@section('content')
+  <div class="row no-container">
+    <div class="col-md-12 pb-5">
+      @include('inc.navdark') <br> <br> <br><br>
+
+    </div>
+  </div>
+  <div class="row offset-md-1 no-container">
+
+  </div>
+
+<div class="row justify-content-center no-container">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header bg-faded">
+        <p class="font-weight-bold text-muted text-center display-5">Please Sign In</p>
+      </div>
+      <div class="card-body bg-light">
+        {!! Form::open(['action' => 'CompanyController@getsignin', 'data-parsley-validate'=>'']) !!}
+
+        <div class="col-sm-12 col-md-12">
+          <div class="form-group">
+            <a href="#" class="btn btn-primary btn-block font-weight-bold">LOG-IN WITH FACEBOOK</a>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12">
+          <div class="form-group">
+            <a href="#" class="btn btn-danger btn-block font-weight-bold">LOG-IN WITH GOOGLE+</a>
+            </div>
+        </div>
+        <p class="text-center font-weight-bold text-secondary">OR</p>
+        <div class="col-sm-12 col-md-12">
+          <div class="form-group">
+              {{-- <label>Email</label> --}}
+              <input class="form-control form-control-lg" name="email"required='' placeholder="Your email" type="text">
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-12">
+          <div class="form-group">
+              {{-- <label>Password</label> --}}
+              <input class="form-control form-control-lg" name="password" required='' placeholder="Password" type="password">
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-12">
+          <div class="form-group">
+              {!! Form::submit('Sign In', ['class' => 'btn btn-outline-primary btn-block']) !!}
+          </div>
+        </div>
+        {!! Form::close() !!}
+
+        <div class="col-sm-12 col-md-12">
+          <div class="form-group">
+            <a href="/companysignup" class="btn btn-block btn-info">Not registered?? !!</a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
 @endsection

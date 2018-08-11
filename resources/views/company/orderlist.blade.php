@@ -1,7 +1,7 @@
 @extends('layouts.mastar')
 
 @section('content')
-  <div id="mySidenav" class="sidenav">
+  {{-- <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="/" class="fa fa-home"></a>
 
@@ -33,7 +33,7 @@
       <h1>Rent A Car</h1>
       <p>Dashboard</p>
   </center>
-    </div>
+    </div> --}}
 
 
       {{-- <div class="logout" style="margin-left:1200px;margin-top:-180px;">
@@ -42,9 +42,9 @@
         @endif
       </div> --}}
 
-  </div>
 
-  <center>
+
+  {{-- <center>
     <div class="row">
       <div class="col-lg-10 col-12" style="width:1200px; margin:0 auto;" class="orderlist">
         @include('inc.messages')
@@ -70,7 +70,57 @@
       </div>
 
     </div>
-  </center>
+  </center> --}}
+
+
+
+  <div class="row no-container">
+    <div class="col-md-12 pb-5">
+      @include('inc.navdark') <br> <br> <br><br>
+
+    </div>
+  </div>
+  <div class="row offset-md-1 no-container">
+
+  </div>
+
+
+<div class="row no-container justify-content-center">
+<div class="col-md-10 align-content-center">
+  <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Car Number</th>
+            <th>Customer's email</th>
+            <th>pickup Date</th>
+            <th>Release Date</th>
+            <th>Pickup Address</th>
+            <th>Pickup Time</th>
+            <th>Action</th>
+            <th>Action</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          @foreach ($orders as $order)
+            <tr>
+              <td>{{$order->carnumber}}</td>
+              <td>{{$order->email}}</td>
+              <td>{{$order->pickupdate}}</td>
+              <td>{{$order->releasedate}}</td>
+
+              <td>{{$order->pickupAddress}}</td>
+              <td>{{$order->pickupTime}}</td>
+              <td> <a href="/bookorder/{{$order->carnumber}}/{{$order->email}}/{{$order->pickupdate}}/{{$order->releasedate}}" class="btn btn-sm btn-success">Confirm Order</a> </td>
+              <td> <a href="/cancelorder/{{$order->carnumber}}/{{$order->email}}" class="btn btn-sm btn-danger">Cancel Order</a> </td>
+            </tr>
+          @endforeach
+        </tbody>
+    </div>
+</div>
+</div>
 
 
 

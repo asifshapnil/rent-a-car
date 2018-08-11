@@ -33,6 +33,7 @@ class CompanyController extends Controller
       $companies->email = $request->input('email');
       $companies->companyname = $request->input('companyname');
       $companies->location = $request->input('location');
+      $companies->phoneNumber = $request->input('phoneNumber');
       $companies->password = bcrypt($request->input('password'));
       $companies->save();
       return redirect('/companysign');
@@ -57,7 +58,15 @@ class CompanyController extends Controller
       $companyid = $company->id;
       $orders = Order::where('company_id',$companyid )->get()->count();
       $book = Book::where('companyid',$companyid )->get()->count();
-      return view('company.profile')->with(['company'=>$company,'orders'=>$orders, 'book'=>$book]);
+      $cars = User::join('vehicles', 'vehicles.user_id', '=', 'users.id')
+                   ->select('vehicles.*')
+                   ->where('vehicles.user_id', '=',$companyid )
+                   ->get();
+      $totalCars = User::join('vehicles', 'vehicles.user_id', '=', 'users.id')
+                   ->select('vehicles.*')
+                   ->where('vehicles.user_id', '=',$companyid )
+                   ->count();
+      return view('company.profile')->with(['company'=>$company,'orders'=>$orders, 'book'=>$book, 'cars' => $cars, 'total' => $totalCars]);
     }
     public function addnewcar($companyid){
       $company = User::where('id', $companyid)->first();
@@ -76,6 +85,8 @@ class CompanyController extends Controller
       $vehicle->number = $request->input('carnumber');
       $vehicle->model = $request->input('carmodel');
       $vehicle->type = $request->input('cartype');
+      $vehicle->description = $request->input('description');
+
       $vehicle->book = 0;
       if ($request->hasFile('carimage')) {
         $image = $request->file('carimage');

@@ -19,7 +19,7 @@ class CreateOrderTable extends Migration
             $table->string('from');
             $table->string('to');
             $table->string('pickupAddress');
-            $table->string('pickupTime');
+            $table->time('pickupTime');
             $table->string('pickupdate');
 
 

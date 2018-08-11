@@ -23,7 +23,7 @@ Route::get('/daybooking', 'CustomerController@ajax');
 Route::get('/oneway', 'CustomerController@ajax');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/companysignup', 'CompanyController@signup');
-Route::post('/storesignup', 'CompanyController@storesignup');
+Route::post('/companysignup', 'CompanyController@storesignup');
 Route::get('/companysign', 'CompanyController@signin')->middleware('Usermiddleware');
 Route::post('/companysign', 'CompanyController@getsignin');
 Route::get('/logout', 'CompanyController@logout');

@@ -17,13 +17,13 @@
   </div> --}}
 
   {{-- @include('inc.navdark') <br> <br> <br> --}}
-    <div class="row">
+    <div class="row no-container">
       <div class="col-md-12 pb-5">
         @include('inc.navdark') <br> <br> <br><br>
 
       </div>
     </div>
-    <div class="row offset-md-1">
+    <div class="row offset-md-1 no-container">
 
     </div>
     {{-- <div id="mySidenav" class="sidenav">
@@ -110,7 +110,7 @@
            </div>
          </div>  --}}
 
-         <div class="row justify-content-center">
+         <div class="row justify-content-center no-container">
            <div class="col-md-8">
              <div class="card">
                 <div class="card-header bg-faded">

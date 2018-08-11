@@ -1,13 +1,13 @@
 @extends('layouts.mastar')
 
 @section('content')
-  <div class="row">
+  <div class="row no-container">
     <div class="col-md-12 pb-5">
       @include('inc.navdark') <br> <br> <br><br>
 
     </div>
   </div>
-  <div class="row offset-md-1">
+  <div class="row offset-md-1 no-container">
 
   </div>
   {{-- <div class="row formmargin">
@@ -63,7 +63,7 @@
   </div>
 
 </div> --}}
-<div class="row justify-content-center">
+<div class="row justify-content-center no-container">
   <div class="col-md-6">
     <div class="card">
       <div class="card-header bg-faded">
