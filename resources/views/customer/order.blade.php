@@ -106,7 +106,7 @@
       @if (session('success'))
         <div class="col-sm-12 col-md-12">
           <div class="form-group">
-            <a href="#" class="btn btn-primary btn-block font-weight-bold">@include('inc.messages')</a>
+            <a href="#" class="btn btn-primary btn-block font-weight-bold text-white">@include('inc.messages')</a>
             </div>
         </div>
       @endif
@@ -119,7 +119,7 @@
       <div class="col-sm-12 col-md-12">
         <div class="form-group">
             {{-- <label>Email</label> --}}
-            <input class="form-control form-control-lg" name="email" required='' placeholder="Your email" type="email">
+            <input class="form-control form-control-lg" name="email" required='' placeholder="Your email" type="email" value="{{Auth::guard('customers')->user()->email}}">
           </div>
       </div>
       <div class="col-sm-12 col-md-12">

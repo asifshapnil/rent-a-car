@@ -84,12 +84,18 @@
               <input class="form-control form-control-lg" name="email" required='' placeholder="Your email" type="text">
             </div>
         </div>
+        @if ($errors->has('email'))
+          <span class="help-block" style="color:red">{!! $errors->first('email') !!}</span>
+        @endif
         <div class="col-sm-12 col-md-12">
           <div class="form-group">
               {{-- <label>Email</label> --}}
               <input class="form-control form-control-lg" name="name" required='' placeholder="Your Name" type="text">
             </div>
         </div>
+        @if ($errors->has('name'))
+          <span class="help-block" style="color:red">{!! $errors->first('name') !!}</span>
+        @endif
 
         <div class="col-sm-12 col-md-12">
           <div class="form-group">
@@ -97,6 +103,9 @@
               <input class="form-control form-control-lg" name="password" required='' placeholder="Password" type="password">
             </div>
         </div>
+        @if ($errors->has('password'))
+          <span class="help-block" style="color:red">{!! $errors->first('password') !!}</span>
+        @endif
 
         <div class="col-sm-12 col-md-12">
           <div class="form-group">

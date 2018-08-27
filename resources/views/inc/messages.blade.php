@@ -1,11 +1,11 @@
 @if(session('success'))
 
-  <h5>{{session('success')}}</h5>
+  <h5 class="text-info text-center  text-white">{{session('success')}}</h5>
 
 @endif
 
 @if(session('error'))
-<div class="alert alert-danger">
-  <h5>{{session('error')}}</h5>
-</div>
+
+  <h5 class="text-danger text-center text-white">{{session('error')}}</h5>
+
 @endif

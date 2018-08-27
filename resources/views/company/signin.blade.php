@@ -71,6 +71,12 @@
 
 <div class="row justify-content-center no-container">
   <div class="col-md-6">
+    @if (session('error'))
+      <div class="card card-header">
+        @include('inc.messages')
+      </div>
+    @endif
+
     <div class="card">
       <div class="card-header bg-faded">
         <p class="font-weight-bold text-muted text-center display-5">Please Sign In</p>
@@ -95,6 +101,9 @@
               <input class="form-control form-control-lg" name="email"required='' placeholder="Your email" type="text">
             </div>
         </div>
+        @if ($errors->has('email'))
+          <span class="help-block" style="color:red">{!! $errors->first('email') !!}</span>
+        @endif
 
         <div class="col-sm-12 col-md-12">
           <div class="form-group">
@@ -102,6 +111,9 @@
               <input class="form-control form-control-lg" name="password" required='' placeholder="Password" type="password">
             </div>
         </div>
+        @if ($errors->has('password'))
+          <span class="help-block" style="color:red">{!! $errors->first('password') !!}</span>
+        @endif
 
         <div class="col-sm-12 col-md-12">
           <div class="form-group">

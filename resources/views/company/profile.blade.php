@@ -81,7 +81,7 @@
   </div> --}}
   <div class="row no-container">
     <div class="col-md-12 pb-5">
-      @include('inc.navdark') <br> <br> <br><br>
+      @include('inc.navdark')
 
     </div>
   </div>
